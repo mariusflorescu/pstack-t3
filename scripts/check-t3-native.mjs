@@ -101,7 +101,8 @@ function standardFindings(name, markdown, skillText) {
 
 function walk(dir) {
   return readdirSync(dir).flatMap((entry) => {
-    if (entry === "node_modules" || entry === "bun.lock") return [];
+    // LICENSE.txt is the root license copied verbatim. Its notices name Cursor.
+    if (entry === "node_modules" || entry === "bun.lock" || entry === "LICENSE.txt") return [];
     const path = join(dir, entry);
     return statSync(path).isDirectory() ? walk(path) : [path];
   });

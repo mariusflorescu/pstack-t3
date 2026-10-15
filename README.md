@@ -89,4 +89,4 @@ Adapted from [cursor/plugins pstack](https://github.com/cursor/plugins/tree/main
 
 ## License
 
-MIT. [LICENSE](./LICENSE) keeps the upstream copyright notices.
+MIT. [LICENSE](./LICENSE) keeps the upstream copyright notices. Each skill folder carries a copy as `LICENSE.txt`.
