@@ -2,7 +2,7 @@
 
 Invoked at the end of every other playbook.
 
-**Worktree.** Work from a git worktree off main. `delegate_task` children inherit it. Multiple writers on the same branch run one after another, with `git fetch && git reset --hard origin/<branch>` between them. Writers that must run in parallel each get their own branch and worktree through `t3_thread_launch` with a worktree `workspaceStrategy`. Dirty branch with unrelated work: patch out, fresh worktree, apply. Snarled worktree: reset from main, redo minimally.
+**Worktree.** Work from a git worktree off main. `delegate_task` children inherit it. Multiple writers on the same branch run one after another. Each writer commits and pushes before the next starts, and the next starts with `git pull --ff-only`. Never `reset --hard` a branch with unpushed work. Writers that must run in parallel each get their own branch and worktree through `delegate_task` with `isolation: "worktree"`, per the Worktrees paragraph of the poteto-mode Subagents section. Dirty branch with unrelated work: patch out, fresh worktree, apply. Snarled worktree: reset from main, redo minimally.
 
 **Commits.** Commit liberally. Rebase into small, ordered commits before opening PRs. Each commit is a future PR: landable, ordered to tell the story. Amend when the fix belongs in a just-made commit. New commit when separable. Commit bodies don't restate the subject.
 

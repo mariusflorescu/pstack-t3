@@ -44,7 +44,7 @@ Move any Accepted item that a lint rule, script, metadata flag, or runtime check
 
 Present the synthesizer's full Accepted / Rejected / Backlog output and wait for explicit approval before applying any Accepted edit. The user picks the subset and may redirect routings. Skill changes affect every future agent in the org. Do not auto-apply.
 
-File each Backlog item to your team's devex or backlog tracker without waiting. Only the Accepted list waits for approval.
+File each Backlog item to your team's devex or backlog tracker only when the operator has granted tracker writes for this session. Otherwise list them in the reply. Only the Accepted list waits for approval.
 
 Follow each approved row's Routing exactly:
 
