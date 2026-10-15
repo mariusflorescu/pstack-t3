@@ -29,9 +29,9 @@ Open a task list (your harness's task tool, or a checklist file at `~/.local/sta
 
 ## Phase B: Fan out
 
-Spawn all N workers in one turn as `delegate_task` children with `mode: "async"`, a `title` naming the slice or race arm, and the step 4 `target`, left unset for `auto` or `inherit-parent`. Children share your checkout, so parallel writers there own disjoint files and run no git commands. A worker that needs its own tree or branch is a `t3_thread_launch` thread with `workspaceStrategy: {"type":"worktree","baseRef":"<commit or branch>","branch":"<new branch>","startFromOrigin":false}`, `modelSelection: {"instanceId": ..., "model": ..., "options": ...}` from step 4, and the brief in `message`. Commit first, because uncommitted edits do not reach a new worktree. One writer per worktree or branch.
+Spawn all N workers in one turn as `delegate_task` children with `mode: "async"`, a `title` naming the slice or race arm, and the step 4 `target`, left unset for `auto` or `inherit-parent`. Children share your checkout, so parallel writers there own disjoint files and run no git commands. A worker that needs its own tree or branch also gets `isolation: "worktree"`, and its brief names the branch to create. Commit first, because uncommitted edits do not reach a new worktree. One writer per worktree or branch.
 
-When a worker must start from a non-default branch, launch it as a `t3_thread_launch` thread with that branch as `baseRef`.
+When a worker must start from a non-default branch, launch it as a `t3_thread_launch` thread with `workspaceStrategy: {"type":"worktree","baseRef":"<that branch>","branch":"<new branch>","startFromOrigin":false}`, `modelSelection: {"instanceId": ..., "model": ..., "options": ...}` from step 4, and the brief in `message`.
 
 Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence. A worker that can prove a defect reports `ISSUES` and lists every issue it can prove, not only the first.
 

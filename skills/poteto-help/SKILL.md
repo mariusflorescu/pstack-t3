@@ -134,7 +134,7 @@ Principles are one-rule skills that `/poteto-mode` reads and cites in its replie
 | A new model choice had no effect | Skills read `~/.config/pstack/pstack-models.md` when they delegate. Subagents already running keep their model. |
 | Runs cost more than expected | See the cost paragraph under Get set up. |
 | A skill didn't load on its own | Only `/setup-pstack` and `deslop` load from the user's words, and `typescript-best-practices` from `.ts` and `.tsx` files. The others load when the user types them or when `/poteto-mode` runs them, and it doesn't run every skill. |
-| Parallel agents overwrote each other | Give each agent its own worktree with a `t3_thread_launch` thread, or give subagents in one checkout disjoint files. |
+| Parallel agents overwrote each other | Give each subagent its own worktree with `delegate_task` `isolation: "worktree"`, or give subagents in one checkout disjoint files. |
 | An overnight run moved but finished nothing | The run needs a check that can pass or fail, not a duration. See [`references/prompting.md`](references/prompting.md). |
 | The reply claims success from a green build | Ask for the real command, flow, stored value, or profile. That's the prove-it-works principle. |
 

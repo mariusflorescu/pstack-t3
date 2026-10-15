@@ -68,7 +68,7 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 
 ### Boot recipe, for every live lane
 
-Each live lane runs in its own `t3_thread_launch` thread with a worktree `workspaceStrategy` at the PR head. Lanes share this machine, so give each lane its own ports. Drive through the control skill.
+Each live lane is a `delegate_task` child with `isolation: "worktree"` that checks out the PR head. Lanes share this machine, so give each lane its own ports. Drive through the control skill.
 
 - [ ] `git fetch origin <head-branch> && git checkout <head SHA>`.
 - [ ] <Start the backend and the surface. Wait for ready.>
