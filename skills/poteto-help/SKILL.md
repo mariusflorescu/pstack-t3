@@ -36,7 +36,7 @@ When the models file is missing and it matters, ask whether the user wants to pi
 
 ## Get set up
 
-1. Install with `npx skills add mariusflorescu/pstack-t3 -g -a claude-code -a codex`. Codex threads run skills as `$<name>` where pstack writes `/<name>`.
+1. Install with `npx skills add mariusflorescu/pstack-t3 -g -a claude-code -a codex --skill '*' -y`. Codex threads run skills as `$<name>` where pstack writes `/<name>`.
 2. Run [`/setup-pstack`](../setup-pstack/SKILL.md). It asks for a reasoning budget, maps a model to each role, and writes `~/.config/pstack/pstack-models.md`. Skills read it the next time they delegate.
 3. Start a real task with `/poteto-mode`, a goal, and a check that can pass or fail.
 

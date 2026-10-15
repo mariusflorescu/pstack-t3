@@ -6,7 +6,7 @@ Keep upstream wording wherever it is harness-neutral. Change only what names a C
 
 ## What reaches an agent
 
-`npx skills add mariusflorescu/pstack-t3 -g -a claude-code -a codex` copies each `skills/<name>/` directory into `~/.agents/skills/<name>/` (Codex reads it there) and symlinks `~/.claude/skills/<name>` to it (Claude Code reads it there). Nothing else in this repo reaches an agent: not this file, not `README.md`, not `scripts/`. A skill links only inside its own directory or to a sibling skill (`../<other-skill>/...`). Anything a skill needs at runtime lives under its own `references/`, `playbooks/` or `scripts/`.
+`npx skills add mariusflorescu/pstack-t3 -g -a claude-code -a codex --skill '*' -y` copies each `skills/<name>/` directory into `~/.agents/skills/<name>/` (Codex reads it there) and symlinks `~/.claude/skills/<name>` to it (Claude Code reads it there). Nothing else in this repo reaches an agent: not this file, not `README.md`, not `scripts/`. A skill links only inside its own directory or to a sibling skill (`../<other-skill>/...`). Anything a skill needs at runtime lives under its own `references/`, `playbooks/` or `scripts/`.
 
 ## Harness facts
 
