@@ -5,10 +5,10 @@ pstack is an engineering skill library for coding agents. Lauren Tan ([poteto](h
 ## Install
 
 ```bash
-npx skills add mariusflorescu/pstack-t3 -g -a claude-code -a codex
+npx skills add mariusflorescu/pstack-t3 -g -a claude-code -a codex --skill '*' -y
 ```
 
-This puts one copy of each skill in `~/.agents/skills/` (Codex reads it there) and a symlink in `~/.claude/skills/` (Claude Code reads it there). Update with `npx skills update -g`. Drop `-g` to install into a single project instead, but install one way or the other, not both: when a skill name exists in both `~/.agents/skills` and a project's `.agents/skills`, Codex resolves neither on `$<name>`.
+The skills name each other, so install them all. This puts one copy of each skill in `~/.agents/skills/` (Codex reads it there) and a symlink in `~/.claude/skills/` (Claude Code reads it there). Update with `npx skills update -g`. Drop `-g` to install into a single project instead, but install one way or the other, not both: when a skill name exists in both `~/.agents/skills` and a project's `.agents/skills`, Codex resolves neither on `$<name>`.
 
 You also need `gh` (the only forge pstack uses) and [Bun](https://bun.sh) for the `orch` and `watch-pr` scripts.
 
@@ -89,4 +89,4 @@ Adapted from [cursor/plugins pstack](https://github.com/cursor/plugins/tree/main
 
 ## License
 
-MIT. [LICENSE](./LICENSE) keeps the upstream copyright notices.
+MIT. [LICENSE](./LICENSE) keeps the upstream copyright notices. Each skill folder carries a copy as `LICENSE.txt`.

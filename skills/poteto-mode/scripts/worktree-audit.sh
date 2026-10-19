@@ -129,7 +129,7 @@ git worktree list --porcelain | awk '/^worktree /{print $2}' | while read -r wt;
 	wt_real=$(CDPATH= cd -- "$wt" 2>/dev/null && pwd -P || printf '%s' "$wt")
 	f=$(printf '%s\n' "$acts" | awk -F'\t' -v p="$wt_real" '$1 == p' | sort -t$'\t' -k2,2 -rn | head -1)
 	if [ -n "$f" ]; then last_ts=$(printf '%s' "$f" | cut -f2)
-		last="$(date -r "$last_ts" '+%Y-%m-%d' 2>/dev/null)/$(printf '%s' "$f" | cut -f3)"; fi
+		last="$(date -r "$last_ts" '+%Y-%m-%d' 2>/dev/null || date -d "@$last_ts" '+%Y-%m-%d' 2>/dev/null)/$(printf '%s' "$f" | cut -f3)"; fi
 	recent=$([ "$last_ts" -gt 0 ] 2>/dev/null && [ $(( (now - last_ts) / 86400 )) -le 4 ] && echo yes || echo no)
 
 	case "$dirty" in wip:*) bucket=hold-wip ;; *)
